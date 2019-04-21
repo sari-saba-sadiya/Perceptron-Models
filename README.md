@@ -11,4 +11,4 @@ Contents:
   |-> perceptronCensored.ipynb : initial code.
   |-> cse440Perceptron.pdf : The assignment guide.    
 
-To view the code use: https://nbviewer.jupyter.org/github/sari-saba-sadiya/
+To view the code use: https://nbviewer.jupyter.org/github/sari-saba-sadiya/Perceptron-Models/blob/master/perceptronCensored.ipynb
