@@ -1,0 +1,39 @@
+Slide 1:
+Today we will talk about the preceptron which was in many ways a precursor for the deep learning / neural networks trend that we have seen over the last decade. This algorithms is also the first representation learning algorithm we are going to look at in this class, meaning that given the data the perceptron can learn useful patterns completely independetly, unlike the naive bayes or reinforcement learning algorithms we previously encountered that rely on humans to make decisions or "code in" different algorithmic states.
+
+Slide 2:
+The perceptron was first proposed by the Frank Rosenblatt, Frank's jewish parents immegrated to NY from Germany before WWII. Frank wasn't a computer scientists, he studied cognitive psychology in Cornell and became a professor in the biology department in 1966. As such we can think of the perceptron as a model of learning in the human brain rather than an algorithm that was designed to solve classifications problem specifically like the SVM. Each perceptron is moduled a a neuron which combines inputs from it's dendrites and sends a signal forward through its Axon. In the perceptron this just means taking a weighted sum of the inputs (x1w1 + x2w2+ ...) and send out an output based on this value. While simple, this algorithm is not that different than what we use today in deep learning, and even in the early 60s there was a big hype around it. Rosenblatt was asked to implement a perceptron computer for the Navy, and you can see articles from the New York Times and the New Yorker about it. The NYT says: "The Navy revealed the embryo of an electronic computer today that it expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence."
+Sadly Frank died soon after in 1971 a boating accident, he was 43. Interestingly, by then he was promemnant politician that campaigned against the war in vietnam. Today the IEEE society gives out an annual Rosenblatt award in his honor, in 2012 it was given to Vapnik the inventor of SVMs which we covered.
+
+Slide 3:
+So what is the perceptron doing? Again given the data sample X and it's class Y (yellow or blue) it tries to find the weights W that help seperate the different classes. In algebra termenology this is the same as finding a hyperplane W that seperates the two classes.
+
+Slide 4:
+So remember if you have a hyperplane defined by Wx+b then w is going to be orthaginal to this plane, right? Also, if we take the the dot product of w and x y you get the cosine of the angle. So in this case all the points above the hyperplane will be teh cosine of an angle smaller than 90 degrees, and those below will be an angle greater than 90 degrees, right? Meaning everything above the hyperplance will be positive and everythign below would be negative. This means that if we want to seperate the classes we can just take the sign of teh dot product.
+
+Slide 5:
+Now you must be thinking all this is well and good, but how do we find W? Well according to Rosenblatt this can be done by startign with the weights initialized to 0 and updating them at each step:
+W(k+1) = Wk + label*X
+
+I encourage you to stop the video and run the simple example in this slide, you can see how you will converge to a W that calssifies the dots perfectly in 4 steps or less.
+
+Slide 6:
+First, in the next few slides we will forget about b and our equation becomes xw = y instead of xw+b = y. This is actually equivalent if we do a spetial trick.
+We need b becuase the hyperplane might not always pass at 0,0 but for each x = (x1,x2) we can simply define x* = (x1,x2,1) and w=(w1,w2) becomes w*=(w1,w2,b) and now x*w* = xw+b so this simple transformation saves us the need to talk about b.
+
+Slide 7:
+Now we want to prove that perceptrons actually converges. First we assume that the points are actually seperable, so in other words we assume that there exists a W* such that xW*+b = y for every x. Now lets assume that we have a point that in mislabled in iteration "k" if we show that k has to be bounded then the perceptron has to converge, right? becuase after a certain iteration no point is mislabeled and the perceptron is perfect. So we know that W(k+1) = W(k)+yx for some misclassfied x. Then
+w(k+1) = w(k) + yx => w*w(k+1) = w*w(k) + y(xw*) >= w*w(k) + 1 -> |w(k+1)| |w*| = |w(k)W*+1| >= |w(k)||w*| + 1 
+Now we know that w starts at zeros, what does this mean that |W(1)| >= 1/|w*| and |W(2)| >= |w(1)| + 1/|w*| >= 2 1/|w*| so by induction |w(k)| > (k) / |w*|
+
+At the same time we know that |w(k+1)|^2 = |w(k)+yx|^2 = |w(k)|^2 + |xy|^2 + 2 w(k) x y = |w(k)|^2 + |x|^2 + 2 (w(k) x) y =   |w(k)|^2 + |x|^2 - 2 <= |w(k)|^2 + |x|^2
+
+we can always bind x by some R, therefore again this means that |w(1)|^2 <= R^2, |w(2)|^2 <= 2*R^2 and |w(k)|^2 <= k R^2
+
+so know we know that (k)^2 / |w*|^2 < |w(k)|^2 <= k R^2 and therefore k <= (R|w*|)^2 and k is bounded. Hence we know that the algorithm converges.
+
+The assignment this week is to code this in python, the discription for this video contains a link to a github repo you will have to pull from, you already have the class coded up for you and you will just need to finish the update method. The data is from the sklearn packadge which we used before, it is a breast cancer data from the wisconsine med school, so every sample is a vector of 30 measurements concerning the shape and size of a tumor, and the label tells us if it's cancerious or not. Every paitent in the set actually recovered so don't let it get you down. My implmentation gets over 93% accuracy.
+
+
+
+ 
