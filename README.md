@@ -1,7 +1,7 @@
 # Perceptron-Models
 [[__YouTube__](https://www.youtube.com/watch?v=Tl-LWfFUQZ0),
-[__Slides__](https://github.com/sari-saba-sadiya/Perceptron-Models/blob/master/assignment/CSE440_perceptron%20class.pdf),
-[__Transcript__](https://github.com/sari-saba-sadiya/Perceptron-Models/blob/master/assignment/Class_Transcript.txt)]
+[__Video Transcript__](https://github.com/sari-saba-sadiya/Perceptron-Models/blob/master/assignment/Class_Transcript.txt),
+[__Slides__](https://github.com/sari-saba-sadiya/Perceptron-Models/blob/master/assignment/CSE440_perceptron%20class.pdf)]
 
 Author: Sari Saba-Sadiya
 
